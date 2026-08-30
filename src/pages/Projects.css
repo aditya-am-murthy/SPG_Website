@@ -1,0 +1,52 @@
+.projects-page { background: var(--bg); }
+.projects-body { padding: 72px 0 96px; }
+
+.projects-year-block {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 40px;
+  margin-bottom: 56px;
+}
+.projects-year-label {
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--ucla-blue);
+  padding-top: 4px;
+  position: sticky;
+  top: 88px;
+  align-self: start;
+}
+.projects-year-items { display: flex; flex-direction: column; gap: 16px; }
+
+.project-item { padding: 26px 28px; display: flex; flex-direction: column; gap: 12px; }
+.project-item-header { display: flex; gap: 8px; align-items: center; }
+.project-item-area {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 100px;
+}
+.project-item-title {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--text); line-height: 1.35;
+}
+.project-item-desc {
+  font-size: .9rem; color: var(--text-muted); line-height: 1.7;
+}
+.project-outcome {
+  background: var(--bg-warm);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.project-outcome-label {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ucla-blue); flex-shrink: 0; padding-top: 2px;
+}
+.project-outcome-text {
+  font-size: .84rem; color: var(--text-muted); line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .projects-year-block { grid-template-columns: 1fr; gap: 16px; }
+  .projects-year-label { position: static; font-size: 1.2rem; }
+}
