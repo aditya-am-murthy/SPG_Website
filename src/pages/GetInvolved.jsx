@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL, sendFormSubmit } from '../formsubmit';
 import './GetInvolved.css';
 
 const SLACK_INVITE = 'https://join.slack.com/t/uclascipol/shared_invite/zt-48e4ikghe-1JdJMXALzhOVvw9pTGRDuQ';
@@ -28,6 +29,27 @@ const faqs = [
 ];
 
 export default function GetInvolved() {
+  const [mailStatus, setMailStatus] = useState('idle');
+
+  async function handleSubscribe(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setMailStatus('sending');
+    try {
+      await sendFormSubmit({
+        _subject: 'SPG newsletter signup',
+        fname: form.fname.value,
+        lname: form.lname.value,
+        email: form.email.value,
+        _honey: form._honey.value,
+      });
+      form.reset();
+      setMailStatus('sent');
+    } catch {
+      setMailStatus('error');
+    }
+  }
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://embed.styledcalendar.com/assets/parent-window.js';
@@ -152,20 +174,24 @@ export default function GetInvolved() {
             <p className="gi-section-sub">
               We share upcoming events, ongoing projects, external opportunities, and news highlights.
             </p>
-            <form
-              className="gi-mail-form"
-              action="https://formsubmit.co/uclascipolgroup@gmail.com"
-              method="POST"
-            >
-              <input type="hidden" name="_subject" value="SPG newsletter signup" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
+            <form className="gi-mail-form" onSubmit={handleSubscribe}>
               <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
               <input className="form-input" type="text" name="fname" placeholder="First name" required />
               <input className="form-input" type="text" name="lname" placeholder="Last name" required />
               <input className="form-input" type="email" name="email" placeholder="Email address" required />
-              <button type="submit" className="btn btn-primary">Subscribe</button>
+              <button type="submit" className="btn btn-primary" disabled={mailStatus === 'sending'}>
+                {mailStatus === 'sending' ? 'Sending…' : 'Subscribe'}
+              </button>
             </form>
+            {mailStatus === 'sent' && (
+              <p className="gi-mail-status ok">You're on the list — we'll be in touch.</p>
+            )}
+            {mailStatus === 'error' && (
+              <p className="gi-mail-status err">
+                Something went wrong. Email us at{' '}
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+              </p>
+            )}
           </section>
 
           {/* FAQ */}

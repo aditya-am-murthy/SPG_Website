@@ -1,7 +1,6 @@
 import { useState } from 'react';
+import { CONTACT_EMAIL, sendFormSubmit } from '../formsubmit';
 import './Contact.css';
-
-const CONTACT_EMAIL = 'uclascipolgroup@gmail.com';
 
 export default function Contact() {
   const [status, setStatus] = useState('idle');
@@ -9,21 +8,15 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      type: form.type.value || 'Not specified',
-      message: form.msg.value,
-      _subject: 'SPG website contact form',
-    };
     setStatus('sending');
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
+      await sendFormSubmit({
+        _subject: 'SPG website contact form',
+        name: form.name.value,
+        email: form.email.value,
+        type: form.type.value || 'Not specified',
+        message: form.msg.value,
       });
-      if (!res.ok) throw new Error('submit failed');
       form.reset();
       setStatus('sent');
     } catch {

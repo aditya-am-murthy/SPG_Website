@@ -99,6 +99,10 @@
   border-color: var(--ucla-blue);
   box-shadow: 0 0 0 3px rgba(39,116,174,.12);
 }
+.gi-mail-status { margin-top: 14px; font-size: .88rem; line-height: 1.55; }
+.gi-mail-status.ok { color: var(--teal); }
+.gi-mail-status.err { color: #9a2f2f; }
+.gi-mail-status a { color: inherit; font-weight: 600; }
 
 /* FAQ */
 .gi-faq { margin-bottom: 64px; }
