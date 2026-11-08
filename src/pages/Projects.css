@@ -1,16 +1,24 @@
 .projects-page { background: var(--bg); }
 .projects-body { padding: 72px 0 96px; }
 
+/* Keep Past Projects / Interviews heroes the same height when toggling. */
+.work-list-hero .page-hero-title { min-height: calc(1.2em * 2); }
+.work-list-hero .page-hero-sub { min-height: calc(1.7em * 2); }
+
 .projects-year-block {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0 40px;
+  grid-template-columns: 80px 1fr;
+  column-gap: 28px;
+  /* Pull the year column into the left gutter so cards share the container edge. */
+  margin-left: -108px;
+  width: calc(100% + 108px);
   margin-bottom: 56px;
 }
 .projects-year-label {
   font-size: 1.5rem; font-weight: 700;
   color: var(--ucla-blue);
-  padding-top: 4px;
+  padding-top: 8px;
+  text-align: right;
   position: sticky;
   top: 88px;
   align-self: start;
@@ -63,9 +71,18 @@
   font-size: .84rem; color: var(--text-muted); line-height: 1.55;
 }
 
+@media (max-width: 1279px) {
+  .projects-year-block {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    width: 100%;
+    gap: 12px;
+  }
+  .projects-year-label { position: static; text-align: left; padding-top: 0; }
+}
+
 @media (max-width: 768px) {
-  .projects-year-block { grid-template-columns: 1fr; gap: 16px; }
-  .projects-year-label { position: static; font-size: 1.2rem; }
+  .projects-year-label { font-size: 1.2rem; }
   .project-item { grid-template-columns: 1fr; }
   .project-item-img-wrap { max-height: 200px; }
 }

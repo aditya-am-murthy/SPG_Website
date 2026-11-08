@@ -7,7 +7,7 @@ import './Work.css';
 export default function Projects() {
   return (
     <div className="projects-page">
-      <div className="page-hero">
+      <div className="page-hero work-list-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'rgba(255,255,255,.65)' }}>Past Work</span>
           <h1 className="serif page-hero-title">Projects that moved the needle</h1>
