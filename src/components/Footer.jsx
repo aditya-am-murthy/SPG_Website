@@ -14,6 +14,7 @@ const cols = [
     heading: 'Our Work',
     links: [
       { label: 'Past Projects', to: '/projects' },
+      { label: 'Interviews',    to: '/projects/interviews' },
       { label: 'Blog & Articles', to: '/blog' },
     ],
   },

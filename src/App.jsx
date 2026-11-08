@@ -8,8 +8,11 @@ import Home        from './pages/Home';
 import About       from './pages/About';
 import Leadership  from './pages/Leadership';
 import Programs    from './pages/Programs';
-import Projects    from './pages/Projects';
-import Blog        from './pages/Blog';
+import Projects      from './pages/Projects';
+import ProjectPost   from './pages/ProjectPost';
+import Interviews    from './pages/Interviews';
+import InterviewPost from './pages/InterviewPost';
+import Blog          from './pages/Blog';
 import BlogPost    from './pages/BlogPost';
 import GetInvolved from './pages/GetInvolved';
 import Contact     from './pages/Contact';
@@ -24,7 +27,10 @@ export default function App() {
           <Route path="/about"        element={<About />} />
           <Route path="/leadership"   element={<Leadership />} />
           <Route path="/programs"     element={<Programs />} />
-          <Route path="/projects"     element={<Projects />} />
+          <Route path="/projects/interviews/:slug" element={<InterviewPost />} />
+          <Route path="/projects/interviews"       element={<Interviews />} />
+          <Route path="/projects/:slug"            element={<ProjectPost />} />
+          <Route path="/projects"                  element={<Projects />} />
           <Route path="/blog"         element={<Blog />} />
           <Route path="/blog/:slug"   element={<BlogPost />} />
           <Route path="/get-involved" element={<GetInvolved />} />

@@ -33,3 +33,7 @@ serviceAccount*.json
 *.sln
 *.sw?
 .claude/
+
+# Local Squarespace archives (site copies live in src/pages)
+interviews/
+past_projects/

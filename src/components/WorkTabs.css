@@ -1,0 +1,25 @@
+.work-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.work-tab {
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--surface);
+  text-decoration: none;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.work-tab:hover { color: var(--ucla-blue); border-color: var(--ucla-blue); }
+.work-tab.active {
+  background: var(--ucla-blue);
+  color: #fff;
+  border-color: var(--ucla-blue);
+}
